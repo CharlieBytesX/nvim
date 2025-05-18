@@ -94,6 +94,11 @@ require("lazy").setup({
             opts = {},
         },
         { "mason-org/mason.nvim" },
+        {
+            "nvim-treesitter/nvim-treesitter",
+            build = "TSUpdate",
+        },
+        { "ellisonleao/gruvbox.nvim" },
 
         -- add your plugins here
     },
@@ -298,3 +303,8 @@ miniclue.setup({
 require("mini.hues").setup({ background = "#002734", foreground = "#c0c8cc" }) -- azure
 
 vim.o.termguicolors = true
+
+require("nvim-treesitter.configs").setup({
+    ensure_installed = { "lua", "vimdoc" },
+    highlight = { enable = true },
+})
