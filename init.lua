@@ -121,6 +121,11 @@ require("mini.animate").setup()
 require("mini.indentscope").setup()
 require("mini.fuzzy").setup()
 
+require("mini.files").setup()
+vim.keymap.set("n", "<leader>e", function()
+    require("mini.files").open()
+end)
+
 require("mini.completion").setup({
     mappings = {
         -- Force two-step/fallback completions
@@ -214,29 +219,13 @@ vim.lsp.config["lua_ls"] = {
                     -- '${3rd}/luv/library'
                     -- '${3rd}/busted/library'
                 },
-                -- Or pull in all of 'runtimepath'.
-                -- NOTE: this is a lot slower and will cause issues when working on
-                -- your own configuration.
-                -- See https://github.com/neovim/nvim-lspconfig/issues/3189
-                -- library = {
-                --   vim.api.nvim_get_runtime_file('', true),
-                -- }
             },
         })
     end,
     -- Command and arguments to start the server.
     cmd = { "lua-language-server" },
-    -- Filetypes to automatically attach to.
     filetypes = { "lua" },
-    -- Sets the "root directory" to the parent directory of the file in the
-    -- current buffer that contains either a ".luarc.json" or a
-    -- ".luarc.jsonc" file. Files that share a root directory will reuse
-    -- the connection to the same LSP server.
-    -- Nested lists indicate equal priority, see |vim.lsp.Config|.
     root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
-    -- Specific settings to send to the server. The schema for this is
-    -- defined by the server. For example the schema for lua-language-server
-    -- can be found here https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
     settings = {
         Lua = {
             runtime = {
@@ -308,3 +297,5 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = { "lua", "vimdoc" },
     highlight = { enable = true },
 })
+
+vim.keymap.set("n", "<leader>e", ":nohl<CR>", { noremap = true })
