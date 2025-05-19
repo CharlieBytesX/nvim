@@ -115,6 +115,9 @@ require("mappings")
 
 require("plugins.lsp.init").setup()
 
+if vim.fn.has("nvim-0.11") == 1 then
+    vim.opt.completeopt:append("fuzzy") -- Use fuzzy matching for built-in completion
+end
 --ACTIVATE LANGUAGES
 vim.lsp.enable("lua_ls")
 -- vim.lsp.enable("sith_python")
