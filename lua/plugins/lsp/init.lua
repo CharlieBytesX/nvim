@@ -1,5 +1,5 @@
 vim.api.nvim_create_autocmd("LspAttach", {
-    -- group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+    group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
     callback = function(event)
         -- NOTE: Remember that Lua is a real programming language, and as such it is possible
         -- to define small helper and utility functions so you don't have to repeat yourself.
@@ -13,11 +13,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map("<leader>lr", vim.lsp.buf.rename, "[R]e[n]ame")
+        map("<leader>lr", vim.lsp.buf.rename, "Rename")
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
-        map("<leader>la", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+        map("<leader>la", vim.lsp.buf.code_action, "Code actions", { "n", "x" })
 
         -- Find references for the word under your cursor.
         -- map("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
-        map("<leader>lD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+        map("<leader>lD", vim.lsp.buf.declaration, "Go to Declarations ")
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
@@ -47,6 +47,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --  Useful when you're not sure what type a variable is and you want to see
         --  the definition of its *type*, not where it was *defined*.
         -- map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+        local ok, fzf = pcall(require, "fzf-lua")
+        if ok then
+            map("<leader>fs", function()
+                fzf.lsp_document_symbols()
+            end, "Search document symbols (current buffer)")
+
+            map("<leader>fS", function()
+                fzf.lsp_live_workspace_symbols()
+            end, "Search workspace symbols")
+
+            map("<leader>gd", function()
+                fzf.lsp_typedefs()
+            end, "Goto Type Definition ")
+
+            map("<leader>fd", function()
+                require("fzf-lua").diagnostics_document()
+            end, "Search diagnostics (buffer)")
+
+            map("<leader>fD", function()
+                require("fzf-lua").diagnostics_workspace()
+            end, "Search diagnostics (buffer)")
+        end
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client

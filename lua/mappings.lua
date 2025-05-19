@@ -74,23 +74,11 @@ vim.keymap.set("n", "<leader>fw", function()
     require("fzf-lua").grep_curbuf()
 end, { noremap = true, desc = "Search word in current buffer" })
 
-vim.keymap.set("n", "<leader>fd", function()
-    require("fzf-lua").diagnostics()
-end, { noremap = true, desc = "Search diagnostics" })
-
 vim.keymap.set("n", "<leader>fg", function()
     require("fzf-lua").live_grep({
         rg_opts = "--hidden --no-ignore --glob '!*.git/*' -i -g '!node_modules/*'",
     })
 end, { noremap = true, desc = "Search word in project" })
-
-vim.keymap.set("n", "<leader>fS", function()
-    require("fzf-lua").lsp_workspace_symbols()
-end, { noremap = true, desc = "Search workspace symbols" })
-
-vim.keymap.set("n", "<leader>fs", function()
-    require("fzf-lua").lsp_document_symbols()
-end, { noremap = true, desc = "Search document symbols (current buffer)" })
 
 vim.keymap.set("n", "<leader>fb", function()
     require("fzf-lua").buffers()
