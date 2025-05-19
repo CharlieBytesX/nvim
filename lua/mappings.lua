@@ -53,7 +53,9 @@ vim.keymap.set("n", "<ESC>", ":nohl<CR>", { noremap = true })
 -- │                                  FILES                                       │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 vim.keymap.set("n", "<leader>e", function()
-    require("mini.files").open()
+    local MiniFiles = require("mini.files")
+    MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+    MiniFiles.reveal_cwd()
 end)
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮

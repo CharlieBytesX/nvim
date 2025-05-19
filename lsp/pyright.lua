@@ -13,10 +13,12 @@ return {
 
     settings = {
         python = {
+            diasableOrganizeImports = true,
             analysis = {
                 autoSearchPaths = true,
-                diagnosticMode = "openFilesOnly",
+                diagnosticMode = "workspace",
                 useLibraryCodeForTypes = true,
+                autoImportCompletions = true,
             },
         },
     },

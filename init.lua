@@ -75,13 +75,29 @@ require("mini.basics").setup()
 require("mini.statusline").setup()
 require("mini.tabline").setup()
 require("mini.keymap").setup()
-require("mini.pairs").setup()
+-- require("mini.pairs").setup()
 require("mini.pick").setup()
 -- require("mini.animate").setup()
 require("mini.indentscope").setup()
 require("mini.fuzzy").setup()
 
-require("mini.files").setup()
+require("mini.files").setup({
+    mappings = {
+        close = "q",
+        go_in = "L",
+        go_in_plus = "l",
+        go_out = "h",
+        go_out_plus = "H",
+        mark_goto = "'",
+        mark_set = "m",
+        reset = "<BS>",
+        reveal_cwd = "@",
+        show_help = "g?",
+        synchronize = "=",
+        trim_left = "<",
+        trim_right = ">",
+    },
+})
 
 require("mini.hues").setup({ background = "#002734", foreground = "#c0c8cc" }) -- azure
 require("plugins.miniCompletions")
@@ -103,3 +119,4 @@ require("plugins.lsp.init").setup()
 vim.lsp.enable("lua_ls")
 -- vim.lsp.enable("sith_python")
 vim.lsp.enable("pyright")
+vim.lsp.enable("ruff")
