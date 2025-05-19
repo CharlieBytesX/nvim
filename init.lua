@@ -179,7 +179,7 @@ require("conform").setup({
     formatters_by_ft = {
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
-        python = { "isort", "black" },
+        -- python = { "isort", "black" },
         -- You can customize some of the format options for the filetype (:help conform.format)
         rust = { "rustfmt", lsp_format = "fallback" },
         -- Conform will run the first available formatter
@@ -293,6 +293,7 @@ require("mason-tool-installer").setup({
 })
 
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("sith_python")
 
 local miniclue = require("mini.clue")
 miniclue.setup({
