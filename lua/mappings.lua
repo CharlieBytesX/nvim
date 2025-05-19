@@ -1,11 +1,35 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                              General                                         │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-vim.keymap.set({ "v", "n" }, "<C-d>", "<C-d>zz", { noremap = true, desc = "Half page down and center cursor" })
-vim.keymap.set({ "v", "n" }, "<C-u>", "<C-u>zz", { noremap = true, desc = "Half page up and center cursor" })
-vim.keymap.set({ "n" }, "n", "nzz", { noremap = true, desc = "Next result and center" })
-vim.keymap.set({ "n" }, "N", "Nzz", { noremap = true, desc = "Previous result and center" })
+vim.keymap.set(
+    { "v", "n" },
+    "<C-d>",
+    "<C-d>zz",
+    { noremap = true, desc = "Half page down and center cursor", silent = true }
+)
+vim.keymap.set(
+    { "v", "n" },
+    "<C-u>",
+    "<C-u>zz",
+    { noremap = true, desc = "Half page up and center cursor", silent = true }
+)
+vim.keymap.set({ "n" }, "n", "nzz", { noremap = true, desc = "Next result and center", silent = true })
+vim.keymap.set({ "n" }, "N", "Nzz", { noremap = true, desc = "Previous result and center", silent = true })
+vim.keymap.set({ "n" }, "x", '"_x', { noremap = true, silent = true })
 
+vim.keymap.set({ "v" }, "<", "<gv", { noremap = true, silent = true })
+vim.keymap.set({ "v" }, ">", ">gv", { noremap = true, silent = true })
+
+vim.keymap.set({ "v" }, "p", '"_dP', { noremap = true, silent = true, desc = "Keep last yanked when pasting" })
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                            Buffer manipluation                               │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+
+vim.keymap.set({ "n" }, "<Up>", ":resize -2<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n" }, "<Down>", ":resize +2<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n" }, "<Left>", ":vertical resize -2<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n" }, "<Right>", ":vertical resize +2<CR>", { noremap = true, silent = true })
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                              TAB NAVIGATION                                  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
