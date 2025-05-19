@@ -1,4 +1,10 @@
--- UNIVERSAL
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                              General                                         │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+vim.keymap.set({ "v", "n" }, "<C-d>", "<C-d>zz", { noremap = true, desc = "Half page down and center cursor" })
+vim.keymap.set({ "v", "n" }, "<C-u>", "<C-u>zz", { noremap = true, desc = "Half page up and center cursor" })
+vim.keymap.set({ "n" }, "n", "nzz", { noremap = true, desc = "Next result and center" })
+vim.keymap.set({ "n" }, "N", "Nzz", { noremap = true, desc = "Previous result and center" })
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                              TAB NAVIGATION                                  │
