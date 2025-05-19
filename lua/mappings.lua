@@ -42,6 +42,13 @@ vim.keymap.set({ "n" }, "<Up>", ":resize -2<CR>", { noremap = true, silent = tru
 vim.keymap.set({ "n" }, "<Down>", ":resize +2<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "<Left>", ":vertical resize -2<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "<Right>", ":vertical resize +2<CR>", { noremap = true, silent = true })
+
+vim.keymap.set({ "n" }, "<leader>wv", ":vsplit<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n" }, "<leader>ws", ":vsplit<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n" }, "<leader>wd", ":close<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n" }, "<leader>bd", ":bd<CR>", { noremap = true, silent = true })
+
+
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                              TAB NAVIGATION                                  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -53,7 +60,7 @@ vim.keymap.set("n", "<ESC>", ":nohl<CR>", { noremap = true })
 -- │                                  FILES                                       │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 vim.keymap.set("n", "<leader>e", function()
-    local MiniFiles = require("mini.files")
+    local MiniFiles = require "mini.files"
     MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
     MiniFiles.reveal_cwd()
 end)
@@ -68,8 +75,9 @@ end)
 vim.keymap.set("n", "<leader>ff", function()
     require("fzf-lua").files()
 end, { noremap = true, desc = "Search files" })
+
 vim.keymap.set("n", "<leader>fF", function()
-    require("fzf-lua").files({ fd_opts = "--hidden --no-ignore --type f --type d" })
+    require("fzf-lua").files { fd_opts = "--hidden --no-ignore --type f --type d" }
 end, { noremap = true, desc = "Search all files including hidden" })
 
 vim.keymap.set("n", "<leader>fw", function()
@@ -77,9 +85,9 @@ vim.keymap.set("n", "<leader>fw", function()
 end, { noremap = true, desc = "Search word in current buffer" })
 
 vim.keymap.set("n", "<leader>fg", function()
-    require("fzf-lua").live_grep({
+    require("fzf-lua").live_grep {
         rg_opts = "--hidden --no-ignore --glob '!*.git/*' -i -g '!node_modules/*'",
-    })
+    }
 end, { noremap = true, desc = "Search word in project" })
 
 vim.keymap.set("n", "<leader>fb", function()
