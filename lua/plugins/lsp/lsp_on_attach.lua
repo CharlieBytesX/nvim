@@ -56,7 +56,7 @@ function M.setup(event)
             fzf.lsp_live_workspace_symbols()
         end, "Search workspace symbols")
 
-        map("<leader>gd", function()
+        map("gd", function()
             fzf.lsp_typedefs()
         end, "Goto Type Definition ")
 

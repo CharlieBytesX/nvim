@@ -56,6 +56,7 @@ require("lazy").setup({
         -- PLUGINS
         { "echasnovski/mini.nvim", version = false },
         require("plugins.lsp.init").plugins,
+        { "neovim/nvim-lspconfig" },
         require("plugins.formatter"),
         { "nvim-treesitter/nvim-treesitter", build = "TSUpdate" },
         { "ellisonleao/gruvbox.nvim" },
@@ -96,7 +97,9 @@ require("nvim-treesitter.configs").setup({
 --- MAPPINGS
 require("mappings")
 
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("sith_python")
-
 require("plugins.lsp.init").setup()
+
+--ACTIVATE LANGUAGES
+vim.lsp.enable("lua_ls")
+-- vim.lsp.enable("sith_python")
+vim.lsp.enable("pyright")
