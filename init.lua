@@ -136,12 +136,36 @@ require("lazy").setup({
         {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
+        {
+            "folke/snacks.nvim",
+            priority = 1000,
+            lazy = false,
+            ---@type snacks.Config
+            opts = {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+                bigfile = { enabled = false },
+                explorer = { enabled = false },
+                indent = { enabled = false },
+                input = { enabled = false },
+                picker = { enabled = false },
+                notifier = { enabled = false },
+                quickfile = { enabled = false },
+                scope = { enabled = false },
+                statuscolumn = { enabled = false },
+                words = { enabled = false },
+
+                scroll = { enabled = false },
+                dashboard = { enabled = true },
+            },
+        },
         -- add your plugins here
     },
 
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { "habamax" } },
+    -- install = { colorscheme = { "habamax" } },
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
@@ -154,7 +178,7 @@ require("mini.tabline").setup()
 require("mini.keymap").setup()
 require("mini.pairs").setup()
 require("mini.pick").setup()
-require("mini.animate").setup()
+-- require("mini.animate").setup()
 require("mini.indentscope").setup()
 require("mini.fuzzy").setup()
 
