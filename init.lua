@@ -98,3 +98,5 @@ require("mappings")
 
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("sith_python")
+
+require("plugins.lsp.init").setup()
