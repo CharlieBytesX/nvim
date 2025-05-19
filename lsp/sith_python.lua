@@ -18,6 +18,7 @@ return {
             -- Settings for the server goes here.
             -- Config example
             ruff = {
+                path = "/home/charlie/.local/bin/ruff",
                 lint = {
                     enable = true,
                 },

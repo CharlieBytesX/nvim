@@ -20,7 +20,19 @@ vim.keymap.set({ "n" }, "x", '"_x', { noremap = true, silent = true })
 vim.keymap.set({ "v" }, "<", "<gv", { noremap = true, silent = true })
 vim.keymap.set({ "v" }, ">", ">gv", { noremap = true, silent = true })
 
+-- Copy selected text to system clipboard
+vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, desc = "Copy to clipboard" })
+
 vim.keymap.set({ "v" }, "p", '"_dP', { noremap = true, silent = true, desc = "Keep last yanked when pasting" })
+-- Paste from system clipboard in normal mode
+vim.keymap.set({ "n" }, "<leader>p", '"+p', { noremap = true, desc = "Paste from clipboard" })
+vim.keymap.set(
+    "v",
+    "<leader>p",
+    '"_d"+P',
+    { noremap = true, silent = true, desc = "Paste from clipboard without overwriting yank" }
+)
+vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, desc = "Copy to clipboard" })
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                            Buffer manipluation                               │
@@ -47,10 +59,13 @@ end)
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                                   FIND                                       │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
-vim.keymap.set("n", "<leader>ff", function()
-    require("fzf-lua").git_files({ show_untracked = true })
-end, { noremap = true, desc = "Search git files including untracked" })
+-- vim.keymap.set("n", "<leader>ff", function()
+--     require("fzf-lua").git_files({ show_untracked = true })
+-- end, { noremap = true, desc = "Search git files including untracked" })
 
+vim.keymap.set("n", "<leader>ff", function()
+    require("fzf-lua").files()
+end, { noremap = true, desc = "Search files" })
 vim.keymap.set("n", "<leader>fF", function()
     require("fzf-lua").files({ fd_opts = "--hidden --no-ignore --type f --type d" })
 end, { noremap = true, desc = "Search all files including hidden" })
