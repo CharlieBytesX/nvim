@@ -67,6 +67,13 @@ function M.setup(event)
         map("<leader>fD", function()
             require("fzf-lua").diagnostics_workspace()
         end, "Search diagnostics (buffer)")
+
+        map("<leader>ld", function()
+            vim.diagnostic.jump({ count = 1, float = true })
+        end, "Next diagnostic")
+        map("<leader>lu", function()
+            vim.diagnostic.jump({ count = -1, float = true })
+        end, "Next diagnostic")
     end
 
     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
