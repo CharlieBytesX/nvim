@@ -1,4 +1,6 @@
--- Load env variables from .config/nvim
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                        LOAD ENVIRONMENT VARIABLES                         	  │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 local env_file = vim.fn.stdpath("config") .. "/.env"
 
 local function load_env_file(path)
@@ -18,49 +20,11 @@ local function load_env_file(path)
 end
 
 load_env_file(env_file)
--- AI
--- add({
---     source = "yetone/avante.nvim",
---     monitor = "main",
---     depends = {
---         "nvim-treesitter/nvim-treesitter",
---         "stevearc/dressing.nvim",
---         "nvim-lua/plenary.nvim",
---         "MunifTanjim/nui.nvim",
---         "echasnovski/mini.icons",
---     },
---     hooks = {
---         post_checkout = function()
---             vim.cmd("make")
---         end,
---     },
--- })
--- --- optional
--- -- add({ source = 'hrsh7th/nvim-cmp' })
--- -- add({ source = 'zbirenbaum/copilot.lua' })
--- -- add({ source = 'HakonHarnes/img-clip.nvim' })
--- -- add({ source = 'MeanderingProgrammer/render-markdown.nvim' })
---
--- -- later(function() require('render-markdown').setup({...}) end)
--- later(function()
---     -- require('img-clip').setup({...}) -- config img-clip
---     -- require("copilot").setup({...}) -- setup copilot to your liking
---     require("avante").setup({
---         provider = "deepseek",
---         vendors = {
---             deepseek = {
---                 __inherited_from = "openai",
---                 api_key_name = "DEEPSEEK_API_KEY",
---                 endpoint = "https://api.deepseek.com",
---                 model = "deepseek-coder",
---             },
---         },
---     }) -- config for avante.nvim
--- end)
---
---
---
--- Bootstrap lazy.nvim
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                          BOOTSTRAP LAZY.NVIM                                │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -83,7 +47,9 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.g.mapleader = " "
 -- vim.g.maplocalleader = "\\"
 
--- Setup lazy.nvim
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                          SETUP LAZY.NVIM                                     │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 require("lazy").setup({
     spec = {
         { "echasnovski/mini.nvim", version = false },
@@ -176,7 +142,7 @@ require("lazy").setup({
     checker = { enabled = true },
 })
 
-require("mini.starter").setup()
+-- require("mini.starter").setup()
 require("mini.icons").setup()
 require("mini.basics").setup()
 require("mini.statusline").setup()
@@ -364,5 +330,3 @@ require("nvim-treesitter.configs").setup({
 
 --- MAPPINGS
 require("mappings")
-
--- FUNCTIONS

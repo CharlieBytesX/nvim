@@ -1,12 +1,22 @@
 -- UNIVERSAL
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                              TAB NAVIGATION                                  │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+vim.keymap.set("n", "L", "<cmd>bnext<CR>", { noremap = true, desc = "Next buffer" })
+vim.keymap.set("n", "H", "<cmd>bprevious<CR>", { noremap = true, desc = "Previous buffer" })
 vim.keymap.set("n", "<ESC>", ":nohl<CR>", { noremap = true })
 
--- FILES
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                                  FILES                                       │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 vim.keymap.set("n", "<leader>e", function()
     require("mini.files").open()
 end)
 
--- FIND
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                                   FIND                                       │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 vim.keymap.set("n", "<leader>ff", function()
     require("fzf-lua").git_files({ show_untracked = true })
 end, { noremap = true, desc = "Search git files including untracked" })
