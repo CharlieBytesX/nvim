@@ -44,7 +44,7 @@ vim.keymap.set({ "n" }, "<Left>", ":vertical resize -2<CR>", { noremap = true, s
 vim.keymap.set({ "n" }, "<Right>", ":vertical resize +2<CR>", { noremap = true, silent = true })
 
 vim.keymap.set({ "n" }, "<leader>wv", ":vsplit<CR>", { noremap = true, silent = true })
-vim.keymap.set({ "n" }, "<leader>ws", ":vsplit<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n" }, "<leader>ws", ":split<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "<leader>wd", ":close<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "<leader>bd", ":bp | bd #<CR>", { noremap = true, silent = true })
 
