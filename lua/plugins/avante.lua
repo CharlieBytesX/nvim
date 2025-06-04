@@ -14,26 +14,25 @@ return {
         --     max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
         --     --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
         -- },
-        -- provider = "deepseek",
-        -- vendors = {
-        --     deepseek = {
-        --         __inherited_from = "openai",
-        --         api_key_name = "DEEPSEEK_API_KEY",
-        --         endpoint = "https://api.deepseek.com",
-        --         model = "deepseek-coder",
-        --     },
-        -- },
-
-        provider = "lmstudio",
-        vendors = {
-            lmstudio = {
+        providers = {
+            deepseek = {
                 __inherited_from = "openai",
-                api_key_name = "",
-                endpoint = "http://10.1.200.27:1234/v1",
-                model = "phi-3.1-mini-128k-instruct",
-		max_tokens =5078
+                api_key_name = "DEEPSEEK_API_KEY",
+                endpoint = "https://api.deepseek.com",
+                model = "deepseek-coder",
             },
         },
+
+        --       provider = "lmstudio",
+        --       vendors = {
+        --           lmstudio = {
+        --               __inherited_from = "openai",
+        --               api_key_name = "",
+        --               endpoint = "http://10.1.200.27:1234/v1",
+        --               model = "phi-3.1-mini-128k-instruct",
+        -- max_tokens =5078
+        --           },
+        --       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
