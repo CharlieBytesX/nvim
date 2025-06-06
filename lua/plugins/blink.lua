@@ -40,6 +40,13 @@ return {
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
+            providers = {
+                snippets = {
+                    should_show_items = function(ctx)
+                        return ctx.trigger.initial_kind ~= "."
+                    end,
+                },
+            },
         },
 
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
