@@ -65,6 +65,8 @@ require("lazy").setup {
         require "plugins.snacks",
         { "windwp/nvim-ts-autotag" },
         require "plugins.blink",
+        { "nvim-treesitter/nvim-treesitter-context", config = true },
+
         --     "echasnovski/mini.snippets",
         --     event = "InsertEnter",
         --     dependencies = {
@@ -167,3 +169,5 @@ vim.lsp.enable "ruff"
 vim.lsp.enable "typescript-vtsls"
 vim.lsp.enable "tailwindcss"
 vim.lsp.enable "eslint"
+vim.lsp.enable "yamlls"
+-- vim.lsp.enable "denols"
