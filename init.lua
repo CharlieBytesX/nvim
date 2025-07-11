@@ -170,4 +170,6 @@ vim.lsp.enable "typescript-vtsls"
 vim.lsp.enable "tailwindcss"
 vim.lsp.enable "eslint"
 vim.lsp.enable "yamlls"
+vim.lsp.enable "rust_analyzer"
+
 -- vim.lsp.enable "denols"
