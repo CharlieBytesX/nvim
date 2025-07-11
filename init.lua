@@ -1,3 +1,4 @@
+--
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                        LOAD ENVIRONMENT VARIABLES                         	  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -20,7 +21,11 @@ local function load_env_file(path)
 end
 
 load_env_file(env_file)
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │                          OPTIONS                                             │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
 
+vim.o.termguicolors = true
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                          BOOTSTRAP LAZY.NVIM                                │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -66,13 +71,18 @@ require("lazy").setup {
         { "windwp/nvim-ts-autotag" },
         require "plugins.blink",
         { "nvim-treesitter/nvim-treesitter-context", config = true },
-
-        --     "echasnovski/mini.snippets",
-        --     event = "InsertEnter",
-        --     dependencies = {
-        --         "rafamadriz/friendly-snippets",
-        --     },
-        -- },
+        {
+            "catgoose/nvim-colorizer.lua",
+            event = "BufReadPre",
+            opts = { -- set to setup table
+            },
+        },
+        {
+            "ggandor/leap.nvim",
+            config = function()
+                require("leap").set_default_mappings()
+            end,
+        },
     },
 
     -- automatically check for plugin updates
@@ -90,6 +100,8 @@ require("mini.pick").setup()
 -- require("mini.animate").setup()
 require("mini.indentscope").setup()
 require("mini.fuzzy").setup()
+require("colorizer").setup()
+
 -- local gen_loader = require("mini.snippets").gen_loader
 -- local lang_patterns = {
 --     jsx = { "javascript/javascript.json", "javascript/react-es7.json" },
