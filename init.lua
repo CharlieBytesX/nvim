@@ -83,6 +83,32 @@ require("lazy").setup {
                 require("leap").set_default_mappings()
             end,
         },
+        {
+            "christoomey/vim-tmux-navigator",
+            cmd = {
+                "TmuxNavigateLeft",
+                "TmuxNavigateDown",
+                "TmuxNavigateUp",
+                "TmuxNavigateRight",
+                "TmuxNavigatePrevious",
+            },
+            keys = {
+                { "<c-h>", "<cmd>TmuxNavigateLeft<cr>", mode = { "n", "i", "v", "s" } },
+                { "<c-j>", "<cmd>TmuxNavigateDown<cr>", mode = { "n", "i", "v", "s" } },
+                { "<c-k>", "<cmd>TmuxNavigateUp<cr>", mode = { "n", "i", "v", "s" } },
+                { "<c-l>", "<cmd>TmuxNavigateRight<cr>", mode = { "n", "i", "v", "s" } },
+                { "<c-\\>", "<cmd>TmuxNavigatePrevious<cr>", mode = { "n", "i", "v", "s" } },
+            },
+        },
+
+        { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+        {
+            "rose-pine/neovim",
+            name = "rose-pine",
+            -- config = function()
+            --     vim.cmd "colorscheme rose-pine"
+            -- end,
+        },
     },
 
     -- automatically check for plugin updates
@@ -182,4 +208,6 @@ vim.lsp.enable "typescript-vtsls"
 vim.lsp.enable "tailwindcss"
 vim.lsp.enable "eslint"
 vim.lsp.enable "yamlls"
+vim.lsp.enable "rust_analyzer"
 -- vim.lsp.enable "denols"
+vim.cmd.colorscheme "rose-pine-moon"
