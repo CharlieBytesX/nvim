@@ -2,6 +2,7 @@
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                        LOAD ENVIRONMENT VARIABLES                         	  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
+--
 local env_file = vim.fn.stdpath "config" .. "/.env"
 
 local function load_env_file(path)
@@ -26,6 +27,8 @@ load_env_file(env_file)
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 
 vim.o.termguicolors = true
+vim.o.swapfile = false
+vim.o.tabstop = 2
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                          BOOTSTRAP LAZY.NVIM                                │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -58,6 +61,7 @@ vim.opt.rtp:prepend(lazypath)
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 require("lazy").setup {
     spec = {
+        require "plugins.theme",
         -- PLUGINS
         { "echasnovski/mini.nvim", version = false },
         require("plugins.lsp.init").plugins,
@@ -77,6 +81,7 @@ require("lazy").setup {
             opts = { -- set to setup table
             },
         },
+
         {
             "ggandor/leap.nvim",
             config = function()
@@ -108,11 +113,13 @@ require("lazy").setup {
             -- config = function()
             --     vim.cmd "colorscheme rose-pine"
             -- end,
+            --
         },
     },
 
+    change_detection = { enabled = true, notify = true },
     -- automatically check for plugin updates
-    checker = { enabled = true },
+    checker = { enabled = false },
 }
 
 -- require("mini.starter").setup()
@@ -163,7 +170,7 @@ require("mini.files").setup {
     },
 }
 
-require("mini.hues").setup { background = "#002734", foreground = "#c0c8cc" } -- azure
+-- require("mini.hues").setup { background = "#002734", foreground = "#c0c8cc" } -- azure
 -- require "plugins.miniCompletions"
 require "plugins.miniClue"
 
@@ -209,5 +216,9 @@ vim.lsp.enable "tailwindcss"
 vim.lsp.enable "eslint"
 vim.lsp.enable "yamlls"
 vim.lsp.enable "rust_analyzer"
+vim.lsp.enable "cssls"
+vim.lsp.enable "ruby_lsp"
+
 -- vim.lsp.enable "denols"
-vim.cmd.colorscheme "rose-pine-moon"
+-- vim.cmd.colorscheme "rose-pine-moon"
+--
