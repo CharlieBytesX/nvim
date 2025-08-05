@@ -110,11 +110,21 @@ require("lazy").setup {
         {
             "rose-pine/neovim",
             name = "rose-pine",
-            -- config = function()
-            --     vim.cmd "colorscheme rose-pine"
-            -- end,
-            --
         },
+
+        {
+            "allaman/kustomize.nvim",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                -- (optional for better directory handling in "List resources")
+                -- "nvim-neo-tree/neo-tree.nvim"
+            },
+            ft = "yaml",
+
+            -- opts = { enable_lua_snip = true },
+        },
+
+        { "diogo464/kubernetes.nvim", lazy = false },
     },
 
     change_detection = { enabled = true, notify = true },
@@ -218,6 +228,11 @@ vim.lsp.enable "yamlls"
 vim.lsp.enable "rust_analyzer"
 vim.lsp.enable "cssls"
 vim.lsp.enable "ruby_lsp"
+vim.lsp.enable "yamlls"
+vim.lsp.enable "rubocop"
+vim.lsp.enable "sorbet"
+vim.lsp.enable "phpactor"
+vim.lsp.enable "laravel_ls"
 
 -- vim.lsp.enable "denols"
 -- vim.cmd.colorscheme "rose-pine-moon"

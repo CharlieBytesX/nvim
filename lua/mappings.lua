@@ -48,7 +48,6 @@ vim.keymap.set({ "n" }, "<leader>ws", ":split<CR>", { noremap = true, silent = t
 vim.keymap.set({ "n" }, "<leader>wd", ":close<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "<leader>bd", ":bp | bd #<CR>", { noremap = true, silent = true })
 
-
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                              TAB NAVIGATION                                  │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -108,3 +107,42 @@ end, { noremap = true, desc = "Search marks" })
 vim.keymap.set("n", "<leader>fk", function()
     require("fzf-lua").keymaps()
 end, { noremap = true, desc = "Search keymaps" })
+
+-- vim.keymap.set("n", "<leader>ud", function()
+--     -- Check if there are any active diagnostics in the current buffer
+--     local current_diagnostics = vim.diagnostic.get(0)
+--
+--     if #current_diagnostics > 0 then
+--         -- If diagnostics are visible, clear them.
+--         vim.diagnostic.hide(0)
+--         print "Diagnostics hidden for current file."
+--     else
+--         -- If diagnostics are not visible, show them.
+--         vim.diagnostic.show(0)
+--         print "Diagnostics shown for current file."
+--     end
+-- end, { noremap = true, silent = true, desc = "Toggle diagnostics for current file" })
+-- p
+
+vim.keymap.set("n", "<leader>ud", function()
+    -- Get the current diagnostic configuration
+    local config = vim.diagnostic.config()
+
+    -- Check the current state of 'virtual_text'. The check is safe because we
+    -- will set it to an explicit boolean later.
+    local currently_enabled = config.virtual_text or false
+
+    -- Toggle the state of both virtual text and underline
+    local new_state = not currently_enabled
+    vim.diagnostic.config {
+        virtual_text = new_state,
+        underline = new_state,
+    }
+
+    -- Provide user feedback
+    if new_state then
+        print "Diagnostic visuals enabled for current file."
+    else
+        print "Diagnostic visuals disabled for current file."
+    end
+end, { noremap = true, silent = true, desc = "Toggle file diagnostics visuals" })
