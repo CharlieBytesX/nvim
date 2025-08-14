@@ -38,10 +38,10 @@ vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, desc = "Copy to clipbo
 -- │                            Buffer manipluation                               │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 
-vim.keymap.set({ "n" }, "<Up>", ":resize -2<CR>", { noremap = true, silent = true })
-vim.keymap.set({ "n" }, "<Down>", ":resize +2<CR>", { noremap = true, silent = true })
-vim.keymap.set({ "n" }, "<Left>", ":vertical resize -2<CR>", { noremap = true, silent = true })
-vim.keymap.set({ "n" }, "<Right>", ":vertical resize +2<CR>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n" }, "<Up>", ":resize -2<CR>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n" }, "<Down>", ":resize +2<CR>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n" }, "<Left>", ":vertical resize -2<CR>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n" }, "<Right>", ":vertical resize +2<CR>", { noremap = true, silent = true })
 
 vim.keymap.set({ "n" }, "<leader>wv", ":vsplit<CR>", { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "<leader>ws", ":split<CR>", { noremap = true, silent = true })
@@ -86,6 +86,7 @@ end, { noremap = true, desc = "Search word in current buffer" })
 vim.keymap.set("n", "<leader>fg", function()
     require("fzf-lua").live_grep {
         rg_opts = "--hidden --no-ignore --glob '!*.git/*' -i -g '!node_modules/*'",
+        silent = true,
     }
 end, { noremap = true, desc = "Search word in project" })
 

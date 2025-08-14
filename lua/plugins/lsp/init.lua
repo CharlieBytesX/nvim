@@ -1,6 +1,6 @@
 local M = {}
 M.plugins = {
-    require("plugins.lsp.mason"),
+    require "plugins.lsp.mason",
 }
 
 function M.setup()
@@ -10,5 +10,5 @@ function M.setup()
     })
 end
 
-require("plugins.lsp.diagnostics")
+require "plugins.lsp.diagnostics"
 return M
