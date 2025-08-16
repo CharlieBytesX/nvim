@@ -25,7 +25,6 @@ return {
                 "rubocop",
                 "sorbet",
                 "phpactor",
-                "laravel_ls",
             },
             automatic_enable = {
                 exclude = {
