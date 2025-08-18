@@ -7,9 +7,15 @@ vim.lsp.config("yamlls", {
                 ["../path/relative/to/file.yml"] = "/.github/workflows/*",
                 ["/path/from/root/of/project"] = "/.github/workflows/*",
 
-                ["https://json.schemastore.org/kustomization.json"] = "**/kustomization.yaml", -- This effectively assigns no schema to kustomization.yaml
+                ["https://json.schemastore.org/kustomization.json"] = "**/kustomization.yaml",
+                ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = "**/kustomization.yaml",
 
-                [require("kubernetes").yamlls_schema()] = { "*.yaml", "!**/kustomization.yaml" },
+                [require("kubernetes").yamlls_schema()] = {
+                    "*.yaml",
+                    "!**/kustomization.yaml",
+                    "!**/docker-compose.yaml",
+                    "!**/docker-compose.yaml",
+                },
             },
         },
     },
