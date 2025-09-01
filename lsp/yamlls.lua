@@ -8,7 +8,7 @@ vim.lsp.config("yamlls", {
                 ["/path/from/root/of/project"] = "/.github/workflows/*",
 
                 ["https://json.schemastore.org/kustomization.json"] = "**/kustomization.yaml",
-                ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = "**/kustomization.yaml",
+                ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = "**/docker-compose.yaml",
 
                 [require("kubernetes").yamlls_schema()] = {
                     "*.yaml",

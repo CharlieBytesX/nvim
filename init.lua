@@ -71,7 +71,8 @@ require("lazy").setup {
         require "plugins.formatter",
         { "nvim-treesitter/nvim-treesitter", build = "TSUpdate" },
         { "ellisonleao/gruvbox.nvim" },
-        { "ibhagwan/fzf-lua" },
+        -- { "ibhagwan/fzf-lua" },
+        require "plugins.fzf",
         require "plugins.avante",
         require "plugins.snacks",
         { "windwp/nvim-ts-autotag" },
@@ -143,6 +144,8 @@ require("lazy").setup {
                 end,
             },
         },
+        { "tpope/vim-rails" },
+        { "folke/tokyonight.nvim" },
     },
 
     change_detection = { enabled = true, notify = true },
@@ -235,12 +238,19 @@ if vim.fn.has "nvim-0.11" == 1 then
     vim.opt.completeopt:append "fuzzy" -- Use fuzzy matching for built-in completion
 end
 --ACTIVATE LANGUAGES
-vim.lsp.enable "lua_ls"
+-- vim.lsp.enable "lua_ls"
 -- vim.lsp.enable("sith_python")
-vim.lsp.enable "yamlls"
-vim.lsp.enable "sorbet"
-vim.lsp.enable "tailwindcss"
-vim.lsp.enable "pyright"
+-- vim.lsp.enable "yamlls"
+-- vim.lsp.enable "sorbet"
+-- vim.lsp.enable "tailwindcss"
+-- vim.lsp.enable "pyright"
+-- vim.lsp.enable "bashls"
+-- vim.lsp.enable "rust_analyzer"
+-- vim.lsp.enable "zls"
+-- vim.lsp.enable "svelte"
+-- vim.lsp.enable "ruby_lsp"
+-- vim.lsp.enable "clangd"
+-- vim.lsp.enable "rubocop"
 
 -- vim.lsp.enable "denols"
 -- vim.cmd.colorscheme "rose-pine-moon"
