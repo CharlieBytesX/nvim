@@ -29,7 +29,10 @@ return {
                 "clangd",
                 "zls",
                 "bashls",
+                "biome",
                 "astro",
+                "gopls",
+                "jsonls",
             }
             local excluded_from_automatic_activation = { "yamlls" }
             require("mason-lspconfig").setup {

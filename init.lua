@@ -30,7 +30,7 @@ vim.o.termguicolors = true
 vim.o.swapfile = false
 vim.o.tabstop = 2
 vim.o.winborder = "rounded"
-vim.o.mouse = ""
+-- vim.o.mouse = ""
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │                          BOOTSTRAP LAZY.NVIM                                │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -146,6 +146,59 @@ require("lazy").setup {
         },
         { "tpope/vim-rails" },
         { "folke/tokyonight.nvim" },
+        { "ThePrimeagen/harpoon" },
+
+        -- {
+        --     "saecki/crates.nvim",
+        --     tag = "stable",
+        --     config = function()
+        --         require("crates").setup {
+        --             lsp = {
+        --                 enabled = true,
+        --                 on_attach = function(client, bufnr)
+        --                     -- the same on_attach function as for your other language servers
+        --                     -- can be ommited if you're using the `LspAttach` autocmd
+        --                 end,
+        --                 actions = true,
+        --                 completion = true,
+        --                 hover = true,
+        --             },
+        --         }
+        --     end,
+        -- },
+
+        -- { "sindrets/diffview.nvim" },
+
+        {
+            "nanozuki/tabby.nvim",
+            config = function()
+                local tabby = require "tabby"
+
+                tabby.setup {
+                    preset = "active_wins_at_tail",
+                    tab = { show_for_all_tabs = true },
+                    option = {
+                        theme = {
+                            fill = "TabLineFill",
+                            head = "TabLine",
+                            current_tab = "TabLineSel",
+                            tab = "TabLine",
+                            win = "TabLine",
+                            tail = "TabLine",
+                        },
+                        nerdfont = true,
+                        lualine_theme = nil,
+                        tab_name = {
+                            name_fallback = function(tabid)
+                                local current_working_directory = vim.fn.getcwd()
+                                return vim.fn.fnamemodify(current_working_directory, ":t")
+                            end,
+                        },
+                        buf_name = { mode = "unique" },
+                    },
+                }
+            end,
+        },
     },
 
     change_detection = { enabled = true, notify = true },
@@ -157,7 +210,7 @@ require("lazy").setup {
 require("mini.icons").setup()
 require("mini.basics").setup()
 require("mini.statusline").setup()
-require("mini.tabline").setup()
+-- require("mini.tabline").setup()
 require("mini.keymap").setup()
 -- require("mini.pairs").setup()
 require("mini.pick").setup()
@@ -260,3 +313,8 @@ vim.g.lazyvim_check_order = false
 vim.g.lazyvim_disable_welcome = true
 
 vim.lsp.enable "typescript-vtsls"
+-- lua/core/autocmds.lua (or wherever you keep your autocommands)
+--
+vim.o.showtabline = 2
+
+vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"

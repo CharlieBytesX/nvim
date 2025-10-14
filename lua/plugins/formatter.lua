@@ -24,11 +24,13 @@ return {
                 -- You can customize some of the format options for the filetype (:help conform.format)
                 rust = { "rustfmt", lsp_format = "fallback" },
                 -- Conform will run the first available formatter
-                javascript = { "prettierd", "prettier", stop_after_first = true },
-                typescript = { "prettierd", "prettier", stop_after_first = true },
-                typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+                javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+                typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+                typescriptreact = { "biome", "prettierd", "prettier", stop_after_first = true },
+                astro = { "prettier", stop_after_first = true },
                 javascriptreact = { "prettierd", "prettier", stop_after_first = true },
                 html = { "prettierd", "prettier", stop_after_first = true },
+                json = { "prettierd", "prettier", stop_after_first = true },
                 -- ruby = { "rubocop", "rubyfmt" },
             },
             format_on_save = function(bufnr)
