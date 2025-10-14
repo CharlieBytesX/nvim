@@ -63,7 +63,7 @@ vim.opt.rtp:prepend(lazypath)
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 require("lazy").setup {
     spec = {
-        require "plugins.theme",
+        -- require "plugins.theme",
         -- PLUGINS
         { "echasnovski/mini.nvim", version = false },
         require("plugins.lsp.init").plugins,
@@ -318,3 +318,5 @@ vim.lsp.enable "typescript-vtsls"
 vim.o.showtabline = 2
 
 vim.opt.sessionoptions = "curdir,folds,globals,help,tabpages,terminal,winsize"
+
+vim.cmd [[colorscheme tokyonight]]

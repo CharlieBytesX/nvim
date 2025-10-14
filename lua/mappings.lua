@@ -106,7 +106,7 @@ end, { noremap = true, desc = "Search word in current buffer" })
 
 vim.keymap.set("n", "<leader>fg", function()
     require("fzf-lua").live_grep {
-        rg_opts = "--hidden --no-ignore --glob '!*.git/*' -i -g '!node_modules/*'",
+        rg_opts = "--hidden  --glob '!*.git/*' -i -g '!node_modules/*' -g '!package-lock.json' -g '!bun.lock'",
         silent = true,
     }
 end, { noremap = true, desc = "Search word in project" })
@@ -272,19 +272,22 @@ keymap("n", prefix .. "c", function()
 end, { desc = "Diagnostics: Show Combined (Signs & Underline)" })
 
 vim.api.nvim_set_keymap("n", "<leader>ta", ":$tabnew<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<leader>tt", ":tabnew | term<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>tn", ":tabn<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>tp", ":taap<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tp", ":tabp<CR>", { noremap = true })
 -- move current tab to previous position
 vim.api.nvim_set_keymap("n", "<leader>tmp", ":atabmove<CR>", { noremap = true })
 -- move current tab to next position
 vim.api.nvim_set_keymap("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>tr", ":Tabby rename_tab ", { noremap = true })
 
-
 vim.api.nvim_set_keymap("n", "<M-j>", "<cmd>cnext<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<M-k>", "<cmd>cprev<CR>", { noremap = true })
 
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+vim.api.nvim_set_keymap("n", "<M-l>", "<cmd>tabn<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<M-h>", "<cmd>tabp<CR>", { noremap = true })
 
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
